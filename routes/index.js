@@ -27,7 +27,9 @@ router.post('/index', (req, res) => {
             //store the user in the session redirect to tables
             console.log('successfully logged in');
             req.session.user = user;
-            return res.redirect('/tables');
+            req.session.save(function() {
+                return res.redirect('/tables');
+            });
         }
     })
 })
