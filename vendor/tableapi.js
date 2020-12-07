@@ -1,4 +1,3 @@
-
 $.getJSON('/data', function(user) {
   var objSentFromSrv = user;
   //console.log("obj from serveer");
@@ -58,17 +57,71 @@ function get(data, user){
       console.log(user);
       console.log(JSON.stringify(user));
       $.ajax({
-
         url: '/tables/Update',
         type: 'post',
         data: JSON.stringify(user),
         contentType: "application/json",
         dataType:'json',
-
-
       });
+      let dates = [];
+      dates = user.userData.date;
+     
+      if (dates.length > 0)
+      {
+        let combinedDatesAndCals = [];
+        combinedDatesAndCals.push(['dates', 'weight']);
+        for (var i=0; i < dates.length; i++){
+          var net = user.userData.caloriesIn[i] - user.userData.caloriesOut[i];
+          var dateString = dates[i].split('-');
+          var date = new Date(dateString[0], dateString[1]- 1, dateString[2]);
+          combinedDatesAndCals.push([ date, net ]);
+        };
+        render(combinedDatesAndCals);
+      }
+      var serverUserdata = user.userData;
+  var activities = serverUserdata.activity;
+  var minutes = serverUserdata.minutes;
+  var i;
+  let activitiesAndMinutes = [];
+  for (i = 0; i<activities.length; i++)
+  {
+   
+    activitiesAndMinutes[i] = [activities[i], minutes[i]];
 
+  };
+  var j; 
+  var k = 0;
+  let reducedActivites = [];
+  let reducedMinutes = [];
+
+
+  for (var j = 0; j < activitiesAndMinutes.length; j++){
+    if (reducedActivites.includes(activitiesAndMinutes[j][0])){
+      var int1 =  Number(reducedMinutes[reducedActivites.indexOf(activitiesAndMinutes[j][0])]);
+      var int2 = Number( activitiesAndMinutes[j][1]);
+      var int3 = int1 + int2; 
+      reducedMinutes[reducedActivites.indexOf(activitiesAndMinutes[j][0])] = int3.toString();
+
+    }
+    else{
+      reducedActivites[k] = activitiesAndMinutes[j][0];
+      reducedMinutes[k] = activitiesAndMinutes[j][1];
+      k++
+    }
+
+  }
+  var pc;
+  let activityAndMinutesPieArray = [];
+  activityAndMinutesPieArray.push(['Activity', 'Time Spent']);
+  for (pc = 0; pc < reducedActivites.length; pc++){
+    activityAndMinutesPieArray.push([reducedActivites[pc], parseInt(reducedMinutes[pc]) ]);
+  }
+  //console.log(activityAndMinutesPieArray);
+
+  renderpie(activityAndMinutesPieArray);
+  renderCards(user);
       
+
 
 
     }

@@ -1,4 +1,7 @@
 $.getJSON('/data', function(user) {
+    renderCards(user);
+});  
+function renderCards(user) {
     if (user.userData.date.length > 0)
     {
         var curresntUserCalories = user.userData.caloriesIn[user.userData.caloriesOut.length -1 ] - user.userData.caloriesOut[user.userData.caloriesOut.length -1];
@@ -15,6 +18,4 @@ $.getJSON('/data', function(user) {
 
     }
 
-
-
-});  
+};

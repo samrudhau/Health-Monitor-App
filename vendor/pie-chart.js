@@ -37,7 +37,7 @@ $.getJSON('/data', function(user) {
   for (pc = 0; pc < reducedActivites.length; pc++){
     activityAndMinutesPieArray.push([reducedActivites[pc], parseInt(reducedMinutes[pc]) ]);
   }
-  console.log(activityAndMinutesPieArray);
+  //console.log(activityAndMinutesPieArray);
 
   renderpie(activityAndMinutesPieArray);
 
