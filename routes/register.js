@@ -6,7 +6,8 @@ const User = require('../models/user')
 router.get('/', (req, res) => {
     res.render('register', {
         userAlreadyExists: req.flash('userAlreadyExists'),
-        passwordsNotMatching: req.flash('passwordsNotMatching')
+        passwordsNotMatching: req.flash('passwordsNotMatching'),
+        minLength: req.flash('minLength')
     });
 });
 
@@ -26,6 +27,14 @@ router.post('/Register', (req, res) => {
             {
                 req.flash('passwordsNotMatching', 'Passwords do not match');
                 console.log('passwords do not match');
+                req.session.save(function() {
+                    res.redirect('/register');
+                });
+            }
+            else if (req.body.password.length < 6)
+            {
+                req.flash('minLength', 'Password must have 6 characters minimum');
+                console.log('must have 6 characters minimum');
                 req.session.save(function() {
                     res.redirect('/register');
                 });

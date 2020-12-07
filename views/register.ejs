@@ -23,16 +23,19 @@
       <% } %>
 
       <% if (passwordsNotMatching.length > 0) { %>
-        <input type="text" id = "inputError" placeholder="Password" name="password" required><br>
+        <input type="password" id = "inputError" placeholder="Password" name="password" required><br>
         <p id = "textError"> <%= passwordsNotMatching %></p><br>
-        <input type="text" id = "inputError" placeholder="Repeat Password" name="repeatPassword" required><br>
+        <input type="password" id = "inputError" placeholder="Repeat Password" name="repeatPassword" required><br>
         <p id = "textError"> <%= passwordsNotMatching %></p><br>
+      <% } else if (minLength.length > 0){ %>
+        <input type="password" id = "inputError" placeholder="Password" name="password" required><br>
+        <p id = "textError"> <%= minLength %></p><br>
+        <input type="password" id = "inputError" placeholder="Repeat Password" name="repeatPassword" required><br>
+        <p id = "textError"> <%= minLength %></p><br>
       <% } else { %>
         <input type="password" placeholder="Password" name="password" required><br>
         <input type="password" placeholder="Repeat Password" name="repeatPassword" required><br>
       <% } %>
-
-
 
       <input type="text" placeholder="First Name" name="firstName" required><br>
       <input type="text" placeholder="Last Name" name="lastName" required><br>
