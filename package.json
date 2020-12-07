@@ -1,7 +1,7 @@
 {
   "name": "HealthApp",
   "version": "1.0.0",
-  "description": "",
+  "description": "Health App",
   "main": "electron-starter.js",
   "scripts": {
     "start": "electron-forge start",
@@ -10,7 +10,7 @@
     "make": "electron-forge make"
   },
   "keywords": [],
-  "author": "",
+  "author": "CMPE131-Group1",
   "license": "ISC",
   "dependencies": {
     "connect-flash": "^0.1.1",
