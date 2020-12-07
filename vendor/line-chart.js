@@ -7,11 +7,10 @@ $.getJSON('/data', function(user) {
   {
     let combinedDatesAndCals = [];
     combinedDatesAndCals.push(['dates', 'weight']);
-
     for (var i=0; i < dates.length; i++){
       var net = user.userData.caloriesIn[i] - user.userData.caloriesOut[i];
       var dateString = dates[i].split('-');
-      var date = new Date(dateString[0], dateString[1], dateString[2]);
+      var date = new Date(dateString[0], dateString[1]- 1, dateString[2]);
       combinedDatesAndCals.push([ date, net ]);
     };
     render(combinedDatesAndCals);
@@ -31,7 +30,7 @@ function render(combinedDatesAndCals){
         var data = google.visualization.arrayToDataTable(combinedDatesAndCals);
         var options = {
           title: '',
-          hAxis: {title: 'Dates', format: 'd MMM'},
+          hAxis: {title: 'Dates', format: 'd MMM yyyy'},
           vAxis: {title: 'Net Calories'},
           legend: 'none'
         };

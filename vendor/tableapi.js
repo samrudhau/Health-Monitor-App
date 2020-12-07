@@ -58,12 +58,17 @@ function get(data, user){
       console.log(user);
       console.log(JSON.stringify(user));
       $.ajax({
+
         url: '/tables/Update',
         type: 'post',
         data: JSON.stringify(user),
         contentType: "application/json",
         dataType:'json',
+
+
       });
+
+      
 
 
     }
