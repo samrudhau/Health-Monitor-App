@@ -34,12 +34,6 @@ function get(data, user){
     filters: true,
     dropdownMenu: false,
     colHeaders: ['Date', 'Activity', 'Minutes', 'Weight', 'Calorie In', 'Calorie Out'],
-    columnSorting: {
-      initialConfig: {
-        column: 0,
-        sortOrder: 'asc'
-      }
-    },
     licenseKey: 'non-commercial-and-evaluation',
     afterChange: function (change, source) { //added cpde
       if (source === 'loadData') {
