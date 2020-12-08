@@ -53,7 +53,7 @@ router.post('/Register', (req, res) => {
                 user.save()
                 .then(() => {
                     console.log('successfully created user');
-                    res.redirect('/register');
+                    res.redirect('/index');
                 })
                 .catch(err =>{
                     console.log('err', err);

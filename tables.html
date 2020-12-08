@@ -6,7 +6,8 @@
   <link rel = "stylesheet" type="text/css" href = "css/style.css" >
   <link rel = "stylesheet" type="text/css" href="css/sb-admin-2.min.css" >
   <link href="/handsontable/handsontable.full.min.css" rel="stylesheet" media="screen">
-  <link href="https://fonts.googleapis.com/css2?family=Handlee&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
   <link rel = "stylesheet" type="text/css" href = "css/style.css" >
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   
@@ -40,8 +41,6 @@
 
                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Net Calories</div>
                 <div id="calorie-card" class="h5 mb-0 font-weight-bold text-gray-800">0</div>
-                <img id = "LeafBorderLeft" src = "/images/LeafBorderLeft.png"></src>
-                <img id = "LeafBorderRight" src = "/images/LeafBorderRight.png"></src>
               </div>
               <div class="col-auto">
                 <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -59,8 +58,6 @@
               <div class="col mr-2">
                 <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Weight</div>
                 <div id="weight-card" class="h5 mb-0 font-weight-bold text-gray-800">0</div>
-                <img id = "LeafBorderLeft" src = "/images/LeafBorderLeft.png"></src>
-                <img id = "LeafBorderRight" src = "/images/LeafBorderRight.png"></src>
               </div>
               <div class="col-auto">
                 <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -78,8 +75,6 @@
               <div class="col mr-2">
                 <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Excercise</div>
                 <div id="activity-card"class="h5 mb-0 font-weight-bold text-gray-800">0 Minutes</div>
-                <img id = "LeafBorderLeft" src = "/images/LeafBorderLeft.png"></src>
-                <img id = "LeafBorderRight" src = "/images/LeafBorderRight.png"></src>
               </div>
             </div>
           </div>
@@ -94,8 +89,6 @@
               <div class="col mr-2">
                 <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Last Entry</div>
                 <div id="date-card" class="h5 mb-0 font-weight-bold text-gray-800">No Previous Entry</div>
-                <img id = "LeafBorderLeft" src = "/images/LeafBorderLeft.png"></src>
-                <img id = "LeafBorderRight" src = "/images/LeafBorderRight.png"></src>
               </div>
               <div class="col-auto">
                 <i class="fas fa-comments fa-2x text-gray-300"></i>
@@ -170,7 +163,7 @@
             <form action="/tables/Input" method="post">
               <input type="Date" name="Date" placeholder="Date" id="Date" required/>
               <div>
-                  <select type="Activity" name="Activity" id="Activity" placeholder="Select Activity" required>
+                  <select name="Activity" default="Other" id="Activity" placeholder="Select Activity" required>
                     <option value="none" selected disabled hidden> 
                       Select an Activity 
                   </option> 

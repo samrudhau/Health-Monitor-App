@@ -6,7 +6,7 @@ $.getJSON('/data', function(user) {
   if (dates.length > 0)
   {
     let combinedDatesAndCals = [];
-    combinedDatesAndCals.push(['dates', 'weight']);
+    combinedDatesAndCals.push(['dates', 'net calories']);
     for (var i=0; i < dates.length; i++){
       var net = user.userData.caloriesIn[i] - user.userData.caloriesOut[i];
       var dateString = dates[i].split('-');
@@ -16,7 +16,7 @@ $.getJSON('/data', function(user) {
     render(combinedDatesAndCals);
   }
   else{
-    render( [ ['date', 'net calories'], ['No Data', 0] ] );
+    render( [ ['Date', 'Net Calories'], ['No Data', 0] ] );
   };
 });
 
