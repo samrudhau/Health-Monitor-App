@@ -1,13 +1,13 @@
-Cross Platform Electron Desktop Application that allows users to monitor health and fitness data. 
+Cross-Platform Electron Desktop Application that allows users to monitor health and fitness data.
 
-Allows users to enter calories in , calories out, weight, and excercie name and time. Displays net calories on a scatter lot and activites on a donut chart. Allows users to register, reset password, or login with username and password on startup.
+Allows users to enter calories in, calories out, weight, and exercise name and time. Displays net calories on a scatter lot and activities on a donut chart. Allows users to register, reset their password, or log in with username and password on startup.
 
-Stores userdata in MongoDb database.
+Stores user data in MongoDB database.
 
 To run:
 1. clone repo
-2. npm install
-3. npm start
+2. <code>npm install</code>
+3. <code>npm install</code>
 
 
 <img src="public/images/dashboard1.png" width="600">
