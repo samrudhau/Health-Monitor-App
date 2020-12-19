@@ -1,44 +1,52 @@
+/*
+This file contains the fucntion to render the donut chart using goodgle charts. First, the user data is fetched with
+jQuery. Then the activity and minutes per activity are sorted by activity. For example, if the user data contains 30
+minutes of running on 11/15 and 20 minutes of running on 11/16, the total minutes will be 50 minutes and it will be displayed
+in the donut chart.
+*/
 $.getJSON('/data', function(user) {
   var serverUserdata = user.userData;
   var activities = serverUserdata.activity;
   var minutes = serverUserdata.minutes;
-  var i;
+  
+  //First an array is creted containing the all activiies and activity minutes in the user data.
   let activitiesAndMinutes = [];
-  for (i = 0; i<activities.length; i++)
+  for ( var i = 0; i<activities.length; i++)
   {
-   
     activitiesAndMinutes[i] = [activities[i], minutes[i]];
+  }
 
-  };
-  var j; 
-  var k = 0;
+  // Then recently created array activitiesAndMinutes is split into 2 seperate arrays that are reduced to unique activities and combined minutes. 
+  var uniqueActivityCount = 0;
   let reducedActivites = [];
   let reducedMinutes = [];
 
-
   for (var j = 0; j < activitiesAndMinutes.length; j++){
     if (reducedActivites.includes(activitiesAndMinutes[j][0])){
-      var int1 =  Number(reducedMinutes[reducedActivites.indexOf(activitiesAndMinutes[j][0])]);
-      var int2 = Number( activitiesAndMinutes[j][1]);
-      var int3 = int1 + int2; 
-      reducedMinutes[reducedActivites.indexOf(activitiesAndMinutes[j][0])] = int3.toString();
-
+      var combinedMinutes = Number(reducedMinutes[reducedActivites.indexOf(activitiesAndMinutes[j][0])]) + Number( activitiesAndMinutes[j][1]);
+      reducedMinutes[reducedActivites.indexOf(activitiesAndMinutes[j][0])] = combinedMinutes.toString();
     }
     else{
-      reducedActivites[k] = activitiesAndMinutes[j][0];
-      reducedMinutes[k] = activitiesAndMinutes[j][1];
-      k++
+      reducedActivites[uniqueActivityCount] = activitiesAndMinutes[j][0];
+      reducedMinutes[uniqueActivityCount] = activitiesAndMinutes[j][1];
+      uniqueActivityCount++
     }
 
   }
-  var pc;
+  
+  /*
+  Then a new array of arrays is created called activityAndMinutesPieArray. activityAndMinutesPieArray has an initial subarray 
+  with the labels for the donut chart "Activity" and "Time Spent". Next activityAndMinutesPieArray will contain subarrays
+  containing the activty name and time spent. 
+  */
+
   let activityAndMinutesPieArray = [];
   activityAndMinutesPieArray.push(['Activity', 'Time Spent']);
-  for (pc = 0; pc < reducedActivites.length; pc++){
-    activityAndMinutesPieArray.push([reducedActivites[pc], parseInt(reducedMinutes[pc]) ]);
+  for (var m = 0; m < reducedActivites.length; m++){
+    activityAndMinutesPieArray.push([reducedActivites[m], parseInt(reducedMinutes[m]) ]);
   }
-  //console.log(activityAndMinutesPieArray);
 
+  //finally, activityAndMinutesPieArray can be passes to renderpie to render the donut chart.
   renderpie(activityAndMinutesPieArray);
 
   
