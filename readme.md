@@ -4,11 +4,14 @@ Allows users to enter calories in, calories out, weight, and exercise name and t
 
 Stores user data in MongoDB database.
 
-To run:
-1. clone repo
+## To run:
+1. Clone the repository
 2. <code>npm install</code>
-3. <code>npm install</code>
+3. <code>npm start</code>
 
+## To build:
+1. <code>npx @electron-forge/cli import</code>
+2. <code>npm run make</code>
 
 <img src="public/images/dashboard1.png" width="600">
 <img src="public/images/dashboard2.png"  width="600">
