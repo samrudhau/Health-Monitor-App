@@ -9,7 +9,14 @@ $.getJSON('/data', function(user) {
   var activities = serverUserdata.activity;
   var minutes = serverUserdata.minutes;
   
-  //First an array is creted containing the all activiies and activity minutes in the user data.
+  /*
+  The user data is im the form of 2 arrays, one containing each activity enttry and one containing eacb activity minuttes entry.
+  The format is as such: activites = ['Running', 'Biking', 'Running'] and minutes = [30, 45, 30]. The renderie function needs the data to
+  be in the form of activityAndMinutesPieArray = [['Activity', 'Time Spent'], [Running, 60], [Biking, 45]]
+
+  
+  First an array is creted containing the all activiies and activity minutes in the user data.
+  */
   let activitiesAndMinutes = [];
   for ( var i = 0; i<activities.length; i++)
   {

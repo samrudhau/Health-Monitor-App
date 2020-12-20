@@ -18,16 +18,6 @@ const userSchema = mongoose.Schema({
         caloriesIn: [],
         caloriesOut: [],
     }
-    // userDatas: [userDataSchema]
 })
-
-// const userDataSchema = mongoose.Schema({
-//     date: Date,
-//     activity: String,
-//     weight: Number,
-//     minutes: Number,
-//     caloriesIn: Number,
-//     caloriesOut: Number
-// })
 
 module.exports = mongoose.model('User', userSchema);

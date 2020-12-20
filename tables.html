@@ -164,9 +164,7 @@
               <input type="Date" name="Date" placeholder="Date" id="Date" required/>
               <div>
                   <select name="Activity" default="Other" id="Activity" placeholder="Select Activity" required>
-                    <option value="none" selected disabled hidden> 
-                      Select an Activity 
-                  </option> 
+                    <option value="" selected disabled hidden> Select an Activity  </option> 
                     <option value="Running">Running</option>
                     <option value="Walking">Walking</option>
                     <option value="Dancing">Dancing</option>
@@ -192,7 +190,7 @@
                 <input type="number" min="0" max="600" name="Minutes" placeholder="Minutes" id="Minutes" required/>
               </div>
               <div>
-                  <input type="number" min="0" max="1300" name="Weight" placeholder="Weight" id="Weight" required/>
+                  <input type="number" min="50" max="1000" name="Weight" placeholder="Weight" id="Weight" required/>
               </div>
               <div>
                   <input type="number" min="0" max="6000" name="CaloriesIn" placeholder="Calorie Intake" id="CaloriesIn" required/>

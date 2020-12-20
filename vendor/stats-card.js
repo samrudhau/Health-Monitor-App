@@ -1,3 +1,6 @@
+/*
+This file simly gets userdata and updates the cards on the dahboard page with DOM.
+*/
 $.getJSON('/data', function(user) {
     renderCards(user);
 });  
