@@ -1,8 +1,9 @@
+# Health Monitor App
 Cross-Platform Electron Desktop Application that allows users to monitor health and fitness data.
 
 Allows users to enter calories in, calories out, weight, and exercise name and time. Displays net calories on a scatter lot and activities on a donut chart. Allows users to register, reset their password, or log in with username and password on startup.
 
-Stores user data in MongoDB database.
+Uses MongoDB Atlas to store user data.
 
 ## To run:
 1. Clone the repository
