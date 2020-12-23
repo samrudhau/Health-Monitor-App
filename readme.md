@@ -18,6 +18,8 @@ Uses MongoDB Atlas to store user data.
 ### Package and distribute the application:
 1. <code>npx @electron-forge/cli import</code>
 2. <code>npm run make</code>
+
+
 For more information, see https://www.electronjs.org/docs/tutorial/quick-start#package-and-distribute-the-application. 
 
 ### Use your own cloud database:
