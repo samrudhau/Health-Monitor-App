@@ -45,7 +45,7 @@ Here you can see your see your recently entered health data in the cards on top.
 
 
 <img src="public/images/dashboard2.png"  width="600">
-Scroll down, you can see a form to enter health data for a specific day. The table contains all previous entries. 
+Scrolling down, you can see a form to enter health data for a specific day. The table contains all previous entries. 
 
 
 <img src="public/images/dashboard3.png"  width="600">
