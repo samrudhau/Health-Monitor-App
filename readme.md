@@ -23,23 +23,33 @@ For more information, see https://www.electronjs.org/docs/tutorial/quick-start#p
 ### Use your own cloud database:
 1. Create your own cluster with MongoDB Atlas
 2. On your cluster, click connect. Then click connect your application. Copy your connection string.
-3. Replace the connection string in the main.js file with your connection string.
-4. It should look like: <code>const mongourl = 'mongodb+srv://<yourName>:<password>@cluster0.wdcoc.mongodb.net/<dbname>?retryWrites=true&w=majority';</code>
+3. Replace the connection string on line 1 of the main.js file with your connection string.
+4. It should look like: <code>const mongourl = 'mongodb+srv://Nmae:password@cluster0.wdcoc.mongodb.net/dbname?retryWrites=true&w=majority';</code>
 
 
 ## Walkthrough 
 
 ### Create Account 
 <img src="public/images/create-account.png"  width="600">
+If you are using the application for the first time, create an account.
 
 ### Login 
 <img src="public/images/login.png"  width="600">
+If you have already created an account, you can login with your username and password.
 
 ### My Health Data
 <img src="public/images/dashboard1.png" width="600">
+Here you can see your see your recently entered health data in the cards on top. The net calories scatterplot shows the net calories for each entered date. The activity donut chart shows the time spent by activity.
+
 <img src="public/images/dashboard2.png"  width="600">
+Scroll down, you can see a form to enter health data for a specific day. The table contains all previous entries. 
+
 <img src="public/images/dashboard3.png"  width="600">
+Data entred previously can be modified in the table. The date can be modified by clicking on the date that needs to be modified and selecting a new one from the drop-down date selector. Other metrics can also be modified by tying in a new value. Once the table is modified, the database will be updated and the charts and cards will be updated.
+
 <img src="public/images/dashboard4.png"  width="600">
+If an invalid value in entered in the table, the cell will be highlited in red. The databbase and charts will not be udated.
 
 ### Forgot Password
 <img src="public/images/forgot-password.png" width="600">
+To reset password, select forgot password from the login screen and folloe the instructions.
