@@ -15,12 +15,12 @@ Uses MongoDB Atlas to store user data.
 2. <code>npm install</code>
 3. <code>npm start</code>
 
-### Package and distribute the application
+### Package and distribute the application:
 1. <code>npx @electron-forge/cli import</code>
 2. <code>npm run make</code>
 For more information, see https://www.electronjs.org/docs/tutorial/quick-start#package-and-distribute-the-application. 
 
-### Use your own cloud database
+### Use your own cloud database:
 1. Create your own cluster with MongoDB Atlas
 2. On your cluster, click connect. Then click connect your application. Copy your connection string.
 3. Replace the connection string in the main.js file with your connection string.
@@ -29,10 +29,17 @@ For more information, see https://www.electronjs.org/docs/tutorial/quick-start#p
 
 ## Walkthrough 
 
+### Create Account 
 <img src="public/images/create-account.png"  width="600">
+
+### Login 
 <img src="public/images/login.png"  width="600">
+
+### My Health Data
 <img src="public/images/dashboard1.png" width="600">
 <img src="public/images/dashboard2.png"  width="600">
 <img src="public/images/dashboard3.png"  width="600">
 <img src="public/images/dashboard4.png"  width="600">
+
+### Forgot Password
 <img src="public/images/forgot-password.png" width="600">
