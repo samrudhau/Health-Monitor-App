@@ -21,9 +21,11 @@ Uses MongoDB Atlas to store user data.
 
 ## Walkthrough 
 
-<img src="public/images/dashboard1.png" width="600">
-<img src="public/images/dashboard2.png"  width="600">
+
 <img src="public/images/login.png"  width="600">
 <img src="public/images/create-account.png"  width="600">
 <img src="public/images/forgot-password.png" width="600">
-
+<img src="public/images/dashboard1.png" width="600">
+<img src="public/images/dashboard2.png"  width="600">
+<img src="public/images/dashboard3.png"  width="600">
+<img src="public/images/dashboard4.png"  width="600">
