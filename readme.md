@@ -33,25 +33,32 @@ For more information, see https://www.electronjs.org/docs/tutorial/quick-start#p
 <img src="public/images/create-account.png"  width="600">
 If you are using the application for the first time, create an account.
 
+
 ### Login 
 <img src="public/images/login.png"  width="600">
 If you have already created an account, you can login with your username and password.
+
 
 ### Dashboard
 <img src="public/images/dashboard1.png" width="600">
 Here you can see your see your recently entered health data in the cards on top. The net calories scatterplot shows the net calories for each entered date. The activity donut chart shows the time spent by activity.
 
+
 <img src="public/images/dashboard2.png"  width="600">
 Scroll down, you can see a form to enter health data for a specific day. The table contains all previous entries. 
+
 
 <img src="public/images/dashboard3.png"  width="600">
 Data entred previously can be modified in the table. The date can be modified by clicking on the date that needs to be modified and selecting a new one from the drop-down date selector. Other metrics can also be modified by tying in a new value. Once the table is modified, the database will be updated and the charts and cards will be updated.
 
+
 <img src="public/images/dashboard4.png"  width="600">
 If an invalid value in entered in the table, the cell will be highlited in red. The databbase and charts will not be udated.
 
+
 <img src="public/images/dashboard5.png"  width="600">
 To remove a row, right click over the row and select Remove this Entry.
+
 
 ### Forgot Password
 <img src="public/images/forgot-password.png" width="600">
