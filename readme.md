@@ -42,14 +42,14 @@ If you have already created an account, you can login with your username and pas
 Here you can see your see your recently entered health data in the cards on top. The net calories scatterplot shows the net calories for each entered date. The activity donut chart shows the time spent by activity.
 
 <img src="public/images/dashboard2.png"  width="600">
-Scroll down, you can see a form to enter health data for a specific day. The table contains all previous entries. 
+Scrolling down, you can see a form to enter health data for a specific day. The table contains all previous entries. 
 
 <img src="public/images/dashboard3.png"  width="600">
-Data entred previously can be modified in the table. The date can be modified by clicking on the date that needs to be modified and selecting a new one from the drop-down date selector. Other metrics can also be modified by tying in a new value. Once the table is modified, the database will be updated and the charts and cards will be updated.
+Data entred previously can be modified in the table. The date can be modified by clicking on the date that needs to be modified and selecting a new one from the drop-down date selector. Other metrics can also be modified by typing in a new value. Once the table is modified, the database, charts, and cards will be updated.
 
 <img src="public/images/dashboard4.png"  width="600">
-If an invalid value in entered in the table, the cell will be highlited in red. The databbase and charts will not be udated.
+If an invalid value in entered in the table, the cell will be highlited in red. The database, charts, and cards will not be updated unless a valid value is entered.
 
 ### Forgot Password
 <img src="public/images/forgot-password.png" width="600">
-To reset password, select forgot password from the login screen and folloe the instructions.
+To reset password, select forgot password from the login screen and follow the instructions.
