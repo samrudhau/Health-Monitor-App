@@ -1,4 +1,5 @@
 # Health Monitor App
+![GitHub contributors](https://img.shields.io/github/contributors/farzinadil/Health-Monitor-App?color=green&style=plastic) ![GitHub commit activity](https://img.shields.io/github/commit-activity/y/farzinadil/Health-Monitor-App?style=plastic) ![GitHub language count](https://img.shields.io/github/languages/count/farzinadil/Health-Monitor-App?style=plastic) 
 
 ## About
 Cross-Platform Electron Desktop Application that allows users to monitor health and fitness data.
