@@ -8,7 +8,7 @@ Allows users to enter calories in, calories out, weight, and exercise name and t
 
 Uses MongoDB Atlas to store user data.
 
-## Getting Started
+## Instalation
 
 ### To run:
 1. Clone the repository
@@ -31,7 +31,7 @@ const mongourl = 'mongodb+srv://name:password@cluster0.wdcoc.mongodb.net/dbname?
 ```
 
 
-## Walkthrough 
+## Usage 
 
 ### Create Account 
 <img src="public/images/create-account.png"  width="600">
