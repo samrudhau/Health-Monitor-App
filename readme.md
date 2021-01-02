@@ -2,7 +2,7 @@
 ![GitHub contributors](https://img.shields.io/github/contributors/farzinadil/Health-Monitor-App?color=green&style=plastic) ![GitHub forks](https://img.shields.io/github/forks/farzinadil/Health-Monitor-App?color=green&label=Forks&style=plastic) ![GitHub commit activity](https://img.shields.io/github/commit-activity/y/farzinadil/Health-Monitor-App?style=plastic) ![GitHub language count](https://img.shields.io/github/languages/count/farzinadil/Health-Monitor-App?style=plastic) ![GitHub watchers](https://img.shields.io/github/watchers/farzinadil/Health-Monitor-App?style=plastic) ![GitHub package.json version](https://img.shields.io/github/package-json/v/farzinadil/Health-Monitor-App?style=plastic)
 
 ## About
-Cross-Platform Electron Desktop Application that allows users to monitor health and fitness data.
+Multi-Platform Electron Desktop Application that allows users to monitor health and fitness data.
 
 Allows users to enter calories in, calories out, weight, and exercise name and time. Displays net calories on a scatter lot and activities on a donut chart. Allows users to register, reset their password, or log in with username and password on startup.
 
