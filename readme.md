@@ -26,7 +26,10 @@ For more information, see https://www.electronjs.org/docs/tutorial/quick-start#p
 1. Create your own cluster with MongoDB Atlas
 2. On your cluster, click connect. Then click connect your application. Copy your connection string.
 3. Replace the connection string on line 1 of the main.js file with your connection string.
-4. It should look like: <code>const mongourl = 'mongodb+srv://Nmae:password@cluster0.wdcoc.mongodb.net/dbname?retryWrites=true&w=majority';</code>
+4. It should look like: 
+```javascript
+const mongourl = 'mongodb+srv://Nmae:password@cluster0.wdcoc.mongodb.net/dbname?retryWrites=true&w=majority';
+```
 
 
 ## Walkthrough 
