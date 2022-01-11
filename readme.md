@@ -57,7 +57,7 @@ Data entred previously can be modified in the table. The date can be modified by
 
 
 <img src="public/images/dashboard4.png"  width="600">
-If an invalid value in entered in the table, the cell will be highlited in red. The databbase and charts will not be udated.
+If an invalid value in entered in the table, the cell will be highlited in red. The databbase and charts will not be updated.
 
 
 <img src="public/images/dashboard5.png"  width="600">
