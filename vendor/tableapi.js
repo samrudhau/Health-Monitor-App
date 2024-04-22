@@ -137,8 +137,8 @@ function renderTable(data, user){
         }
       }
     },
-    colHeaders: ['Date', 'Activity', 'Minutes', 'Weight', 'Calorie In', 'Calorie Out'],
-    colWidths: [125, 125, 90, 90, 100, 100],
+    colHeaders: ['Date', 'Activity', 'Minutes', 'Weight', 'Body Temperature', 'Heart Rate'],
+    colWidths: [125, 125, 90, 90, 150, 100],
     columns: [
       {data: 'date', type: 'date', dateFormat: 'MM/DD/YYYY', correctFormat: true},
       {data: 'activity', type: 'text'},

@@ -31,10 +31,10 @@ router.post('/Register', (req, res) => {
                     res.redirect('/register');
                 });
             }
-            else if (req.body.password.length < 6)
+            else if (req.body.password.length < 8)
             {
-                req.flash('minLength', 'Password must have 6 characters minimum');
-                console.log('must have 6 characters minimum');
+                req.flash('minLength', 'Password must have 8 characters minimum');
+                console.log('must have 8 characters minimum');
                 req.session.save(function() {
                     res.redirect('/register');
                 });

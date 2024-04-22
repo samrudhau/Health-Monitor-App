@@ -17,6 +17,11 @@ router.post('/Logout', (req, res) => {
     
     res.redirect('/index') 
 })
+router.post('/Report', (req, res) => {
+    req.session.save(function() {
+        res.redirect('/report');
+    });
+})
 
 router.post('/Input', (req, res) => {
     let newUserData = req.session.user.userData;

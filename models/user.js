@@ -15,8 +15,8 @@ const userSchema = mongoose.Schema({
         activity: [],
         weight: [],
         minutes: [],
-        caloriesIn: [],
-        caloriesOut: [],
+        BodyTemp: [],
+        HeartRate: [],
     }
 })
 

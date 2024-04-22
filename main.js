@@ -1,4 +1,5 @@
-const mongourl = 'mongodb+srv://Bao:bao45621@cluster0.oiyzl.mongodb.net/<dbname>?retryWrites=true&w=majority';
+
+const mongourl = 'mongodb+srv://samrudhau0:KYQqX0bMT99iIu0a@healthapp.7jykien.mongodb.net/?retryWrites=true&w=majority&appName=Healthapp';
 const mongoose = require('mongoose');
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -27,7 +28,7 @@ const data = require('./routes/data');
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(expressLayouts);
-app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json({ type: 'application/json' }))
 app.use(session({
     secret: 'bao123456789',
@@ -48,12 +49,14 @@ app.use('/data', data);
 app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/vendor'));
 
+// Connect to MongoDB
+mongoose.connect(mongourl, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+}).then(() => {
+    console.log("Connection success");
+}).catch(err => {
+    console.error('ERROR CRASHING', err);
+});
 
-mongoose.connect(mongourl,{useNewUrlParser: true}, {useUnifiedTopology: true})
-    .then(client =>{ console.log("Connection success"); })
-    .catch(err => console.error('ERROR CRASHING', err));
-
-const server = app.listen(PORT, () => console.log(`Express server listening on port 3000`));
-
-
-module.exports = app;
+const server = app.listen(PORT, () => console.log(`Express server listening on port ${PORT}`));
