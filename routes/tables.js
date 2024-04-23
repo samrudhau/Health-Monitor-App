@@ -21,10 +21,12 @@ router.post('/Report', (req, res) => {
     req.session.save(function() {
         res.redirect('/report');
     });
-})
+});
 
 router.post('/Input', (req, res) => {
     let newUserData = req.session.user.userData;
+    console.log('req.session.user:', req.session.user);
+    console.log('req.session.user.userData:', req.session.user.userData);
     var enteredDate = Date.parse(req.body.Date);
     if (newUserData.date.length > 0) //the user has data in their account
     {
@@ -33,11 +35,12 @@ router.post('/Input', (req, res) => {
         if (enteredDate >= lastIndexDate)
         {
             newUserData.date.push(req.body.Date);
-            newUserData.activity.push(req.body.Activity);
             newUserData.weight.push(req.body.Weight);
-            newUserData.minutes.push(req.body.Minutes);
-            newUserData.caloriesIn.push(req.body.CaloriesIn);
-            newUserData.caloriesOut.push(req.body.CaloriesOut);
+            newUserData.age.push(req.body.Age);
+            newUserData.HeartRate.push(req.body.HeartRate);
+            newUserData.BodyTemp.push(req.body.BodyTemp);
+            newUserData.gender.push(req.body.gender);
+
         }
         else
         {
@@ -47,12 +50,12 @@ router.post('/Input', (req, res) => {
                 lastIndexDate = Date.parse(newUserData.date[i]);
                 if (lastIndexDate >= enteredDate)
                 {
-                    newUserData.date.splice(i, 0, req.body.Date)
-                    newUserData.activity.splice(i, 0, req.body.Activity);
+                    newUserData.date.splice(i, 0, req.body.Date);
+                    newUserData.age.splice(i, 0, req.body.Age);
                     newUserData.weight.splice(i, 0, req.body.Weight);
-                    newUserData.minutes.splice(i, 0, req.body.Minutes);
-                    newUserData.caloriesIn.splice(i, 0, req.body.CaloriesIn);
-                    newUserData.caloriesOut.splice(i, 0, req.body.CaloriesOut);
+                    newUserData.gender.splice(i, 0, req.body.gender);
+                    newUserData.BodyTemp.splice(i, 0, req.body.BodyTemp);
+                    newUserData.HeartRate.splice(i, 0, req.body.hearRate);
                     break;
                 }
             }
@@ -61,11 +64,11 @@ router.post('/Input', (req, res) => {
     else //user has no data push it in
     {
         newUserData.date.push(req.body.Date);
-        newUserData.activity.push(req.body.Activity);
         newUserData.weight.push(req.body.Weight);
-        newUserData.minutes.push(req.body.Minutes);
-        newUserData.caloriesIn.push(req.body.CaloriesIn);
-        newUserData.caloriesOut.push(req.body.CaloriesOut);
+        newUserData.age.push(req.body.Age);
+        newUserData.HeartRate.push(req.body.HeartRate);
+        newUserData.BodyTemp.push(req.body.BodyTemp);
+        newUserData.gender.push(req.body.gender);
     }
 
     User.findByIdAndUpdate({_id: req.session.user._id}, {userData: newUserData}, {useFindAndModify:true}, function(err, res) {

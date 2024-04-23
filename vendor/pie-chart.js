@@ -1,72 +1,72 @@
 /*
 This file contains the fucntion to render the donut chart using goodgle charts. First, the user data is fetched with
-jQuery. Then the activity and minutes per activity are sorted by activity. For example, if the user data contains 30
-minutes of running on 11/15 and 20 minutes of running on 11/16, the total minutes will be 50 minutes and it will be displayed
+jQuery. Then the age and gender per age are sorted by age. For example, if the user data contains 30
+gender of running on 11/15 and 20 gender of running on 11/16, the total gender will be 50 gender and it will be displayed
 in the donut chart.
 */
 $.getJSON('/data', function(user) {
   var serverUserdata = user.userData;
-  var activities = serverUserdata.activity;
-  var minutes = serverUserdata.minutes;
+  var activities = serverUserdata.age;
+  var gender = serverUserdata.gender;
   
   /*
-  The user data is im the form of 2 arrays, one containing each activity enttry and one containing eacb activity minuttes entry.
-  The format is as such: activites = ['Running', 'Biking', 'Running'] and minutes = [30, 45, 30]. The renderie function needs the data to
-  be in the form of activityAndMinutesPieArray = [['Activity', 'Time Spent'], [Running, 60], [Biking, 45]]
+  The user data is im the form of 2 arrays, one containing each age enttry and one containing eacb age minuttes entry.
+  The format is as such: activites = ['Running', 'Biking', 'Running'] and gender = [30, 45, 30]. The renderie function needs the data to
+  be in the form of ageAndgenderPieArray = [['age', 'Time Spent'], [Running, 60], [Biking, 45]]
 
   
-  First an array is creted containing the all activiies and activity minutes in the user data.
+  First an array is creted containing the all activiies and age gender in the user data.
   */
-  let activitiesAndMinutes = [];
+  let activitiesAndgender = [];
   for ( var i = 0; i<activities.length; i++)
   {
-    activitiesAndMinutes[i] = [activities[i], minutes[i]];
+    activitiesAndgender[i] = [activities[i], gender[i]];
   }
 
-  // Then recently created array activitiesAndMinutes is split into 2 seperate arrays that are reduced to unique activities and combined minutes. 
-  var uniqueActivityCount = 0;
+  // Then recently created array activitiesAndgender is split into 2 seperate arrays that are reduced to unique activities and combined gender. 
+  var uniqueageCount = 0;
   let reducedActivites = [];
-  let reducedMinutes = [];
+  let reducedgender = [];
 
-  for (var j = 0; j < activitiesAndMinutes.length; j++){
-    if (reducedActivites.includes(activitiesAndMinutes[j][0])){
-      var combinedMinutes = Number(reducedMinutes[reducedActivites.indexOf(activitiesAndMinutes[j][0])]) + Number( activitiesAndMinutes[j][1]);
-      reducedMinutes[reducedActivites.indexOf(activitiesAndMinutes[j][0])] = combinedMinutes.toString();
+  for (var j = 0; j < activitiesAndgender.length; j++){
+    if (reducedActivites.includes(activitiesAndgender[j][0])){
+      var combinedgender = Number(reducedgender[reducedActivites.indexOf(activitiesAndgender[j][0])]) + Number( activitiesAndgender[j][1]);
+      reducedgender[reducedActivites.indexOf(activitiesAndgender[j][0])] = combinedgender.toString();
     }
     else{
-      reducedActivites[uniqueActivityCount] = activitiesAndMinutes[j][0];
-      reducedMinutes[uniqueActivityCount] = activitiesAndMinutes[j][1];
-      uniqueActivityCount++
+      reducedActivites[uniqueageCount] = activitiesAndgender[j][0];
+      reducedgender[uniqueageCount] = activitiesAndgender[j][1];
+      uniqueageCount++
     }
 
   }
   
   /*
-  Then a new array of arrays is created called activityAndMinutesPieArray. activityAndMinutesPieArray has an initial subarray 
-  with the labels for the donut chart "Activity" and "Time Spent". Next activityAndMinutesPieArray will contain subarrays
+  Then a new array of arrays is created called ageAndgenderPieArray. ageAndgenderPieArray has an initial subarray 
+  with the labels for the donut chart "age" and "Time Spent". Next ageAndgenderPieArray will contain subarrays
   containing the activty name and time spent. 
   */
 
-  let activityAndMinutesPieArray = [];
-  activityAndMinutesPieArray.push(['Activity', 'Time Spent']);
+  let ageAndgenderPieArray = [];
+  ageAndgenderPieArray.push(['age', 'Time Spent']);
   for (var m = 0; m < reducedActivites.length; m++){
-    activityAndMinutesPieArray.push([reducedActivites[m], parseInt(reducedMinutes[m]) ]);
+    ageAndgenderPieArray.push([reducedActivites[m], parseInt(reducedgender[m]) ]);
   }
 
-  //finally, activityAndMinutesPieArray can be passes to renderpie to render the donut chart.
-  renderpie(activityAndMinutesPieArray);
+  //finally, ageAndgenderPieArray can be passes to renderpie to render the donut chart.
+  renderpie(ageAndgenderPieArray);
 
   
   
 });
-function renderpie(activityAndMinutesPieArray){
+function renderpie(ageAndgenderPieArray){
   google.charts.load("current", {packages:["corechart"]});
   google.charts.setOnLoadCallback(drawChart);
   function drawChart() {
-    var data = google.visualization.arrayToDataTable(activityAndMinutesPieArray);
+    var data = google.visualization.arrayToDataTable(ageAndgenderPieArray);
 
     var options = {
-      title: 'Time Spent by Activity',
+      title: 'Time Spent by age',
       pieHole: 0.4,
     };
 
