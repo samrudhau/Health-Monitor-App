@@ -36,14 +36,14 @@ $.getJSON('/data', function(user) {
   to the Handson table function.
   */
   for (var i=0; i<entries.date.length; i++){
-    var userdataobject = {date:"", activity:"", minutes:0, weight:0, caloriesIn: 0, caloriesOut: 0};
+    var userdataobject = {date:"", age:"", minutes:0, weight:0, BodyTemp: 0, HeartRate: 0};
     userDataArray.push(userdataobject);
     userDataArray[i].date = entries.date[i];
-    userDataArray[i].activity = entries.activity[i];
-    userDataArray[i].minutes = entries.minutes[i];
+    userDataArray[i].age = entries.age[i];
+    userDataArray[i].gender = entries.gender[i];
     userDataArray[i].weight = entries.weight[i];
-    userDataArray[i].caloriesIn = entries.caloriesIn[i];
-    userDataArray[i].caloriesOut = entries.caloriesOut[i];
+    userDataArray[i].BodyTemp = entries.BodyTemp[i];
+    userDataArray[i].HeartRate = entries.HeartRate[i];
   };
 
   
@@ -66,9 +66,9 @@ function renderTable(data, user){
     }, 200);
   };
 
-  minutesValidator = function (value, callback) {
+  genderValidator = function (value, callback) {
     setTimeout(function(){
-      if (value > 0 && value <= 600) {
+      if (value == 'male' || value == 'female' || value == 'others') {
         callback(true);
       }
       else {
@@ -77,7 +77,7 @@ function renderTable(data, user){
     }, 200);
   };
 
-  caloriesInValidator = function (value, callback) {
+  BodyTempValidator = function (value, callback) {
     setTimeout(function(){
       if (value > 0 && value <= 6000) {
         callback(true);
@@ -88,7 +88,7 @@ function renderTable(data, user){
     }, 200);
   };
 
-  caloriesOutValidator = function (value, callback) {
+  HeartRateValidator = function (value, callback) {
     setTimeout(function(){
       if (value > 0 && value <= 6000) {
         callback(true);
@@ -115,15 +115,15 @@ function renderTable(data, user){
       */
       callback: function (key, selection, clickEvent) {
         /*
-        If the user selects to remove a row, all the data (date, activity, weight, etc. ) need to be removed from that row.
+        If the user selects to remove a row, all the data (date, age, weight, etc. ) need to be removed from that row.
         */
        
         user.userData.date.splice(selection[0].end.row, 1);
-        user.userData.activity.splice(selection[0].end.row, 1);
+        user.userData.age.splice(selection[0].end.row, 1);
         user.userData.weight.splice(selection[0].end.row, 1);
-        user.userData.minutes.splice(selection[0].end.row, 1);
-        user.userData.caloriesIn.splice(selection[0].end.row, 1);
-        user.userData.caloriesOut.splice(selection[0].end.row, 1);
+        user.userData.gender.splice(selection[0].end.row, 1);
+        user.userData.BodyTemp.splice(selection[0].end.row, 1);
+        user.userData.HeartRate.splice(selection[0].end.row, 1);
         
         /*
         Once all the data in the row is removed, the charts and cards need to be updated.
@@ -137,15 +137,15 @@ function renderTable(data, user){
         }
       }
     },
-    colHeaders: ['Date', 'Activity', 'Minutes', 'Weight', 'Body Temperature', 'Heart Rate'],
-    colWidths: [125, 125, 90, 90, 150, 100],
+    colHeaders: ['Date', 'age', 'gender', 'Weight', 'Body Temperature', 'Heart Rate'],
+    colWidths: [125, 90, 90, 90, 150, 100],
     columns: [
       {data: 'date', type: 'date', dateFormat: 'MM/DD/YYYY', correctFormat: true},
-      {data: 'activity', type: 'text'},
-      {data: 'minutes',validator: minutesValidator, allowInvalid: true},
+      {data: 'age', type: 'text'},
+      {data: 'gender',validator: genderValidator, allowInvalid: true},
       {data: 'weight', validator: weightValidator, allowInvalid: true},
-      {data: 'caloriesIn', validator: caloriesInValidator, allowInvalid: true},
-      {data: 'caloriesOut', validator: caloriesOutValidator, allowInvalid: true},
+      {data: 'BodyTemp', validator: BodyTempValidator, allowInvalid: true},
+      {data: 'HeartRate', validator: HeartRateValidator, allowInvalid: true},
     ],
     licenseKey: 'non-commercial-and-evaluation',
     afterChange: function (change, source) { 
@@ -217,59 +217,6 @@ function renderTable(data, user){
       contentType: "application/json",
       dataType:'json',
       });
-      /*
-       Now, the cards and charts need to be updated. The data will be processed just as it is in the cards.js, line-chart.js, and 
-       pie-chart,js files. Then the render(), renderCards(), and renderpie() functions are called to update the charts and cards.
-       */
-      let dates = [];
-      dates = user.userData.date;
-      if (dates.length > 0)
-      {
-        let combinedDatesAndCals = [];
-        combinedDatesAndCals.push(['dates', 'weight']);
-        for (var i=0; i < dates.length; i++){
-        var net = user.userData.caloriesIn[i] - user.userData.caloriesOut[i];
-        var dateString = dates[i].split('-');
-        var date = new Date(dateString[0], dateString[1]- 1, dateString[2]);
-        combinedDatesAndCals.push([ date, net ]);
-         };
-        render(combinedDatesAndCals);
-        };
-        var serverUserdata = user.userData;
-        var activities = serverUserdata.activity;
-        var minutes = serverUserdata.minutes;
-        let activitiesAndMinutes = [];
-        for (var i = 0; i<activities.length; i++)
-        {
-          activitiesAndMinutes[i] = [activities[i], minutes[i]];
-        };
-
-        var uniqueActivityCount = 0;
-        let reducedActivites = [];
-        let reducedMinutes = [];
-
-
-        for (var j = 0; j < activitiesAndMinutes.length; j++){
-          if (reducedActivites.includes(activitiesAndMinutes[j][0])){
-            var combinedMinutes = Number(reducedMinutes[reducedActivites.indexOf(activitiesAndMinutes[j][0])]) + Number( activitiesAndMinutes[j][1]);
-            reducedMinutes[reducedActivites.indexOf(activitiesAndMinutes[j][0])] = combinedMinutes.toString();
-
-          }
-          else{
-            reducedActivites[uniqueActivityCount] = activitiesAndMinutes[j][0];
-            reducedMinutes[uniqueActivityCount] = activitiesAndMinutes[j][1];
-            uniqueActivityCount++;
-          }
-
-        }
-          
-        let activityAndMinutesPieArray = [];
-        activityAndMinutesPieArray.push(['Activity', 'Time Spent']);
-        for (var i = 0; i < reducedActivites.length; i++){
-          activityAndMinutesPieArray.push([reducedActivites[i], parseInt(reducedMinutes[i]) ]);
-        }
-
-        renderpie(activityAndMinutesPieArray);
-        renderCards(user);
+      renderCards(user);
 
   };

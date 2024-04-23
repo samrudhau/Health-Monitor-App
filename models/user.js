@@ -12,11 +12,12 @@ const userSchema = mongoose.Schema({
 
     userData: {
         date: [],
-        activity: [],
+        age: [],
         weight: [],
-        minutes: [],
+        gender: [],
         BodyTemp: [],
         HeartRate: [],
+        Prediction: [],
     }
 })
 

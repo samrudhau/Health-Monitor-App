@@ -33,11 +33,11 @@ router.post('/Input', (req, res) => {
         if (enteredDate >= lastIndexDate)
         {
             newUserData.date.push(req.body.Date);
-            newUserData.activity.push(req.body.Activity);
+            newUserData.age.push(req.body.Age);
             newUserData.weight.push(req.body.Weight);
-            newUserData.minutes.push(req.body.Minutes);
-            newUserData.caloriesIn.push(req.body.CaloriesIn);
-            newUserData.caloriesOut.push(req.body.CaloriesOut);
+            newUserData.Gender.push(req.body.Gender);
+            newUserData.BodyTemp.push(req.body.BodyTemp);
+            newUserData.HeartRate.push(req.body.HeartRate);
         }
         else
         {
@@ -48,11 +48,11 @@ router.post('/Input', (req, res) => {
                 if (lastIndexDate >= enteredDate)
                 {
                     newUserData.date.splice(i, 0, req.body.Date)
-                    newUserData.activity.splice(i, 0, req.body.Activity);
+                    newUserData.age.splice(i, 0, req.body.Age);
                     newUserData.weight.splice(i, 0, req.body.Weight);
-                    newUserData.minutes.splice(i, 0, req.body.Minutes);
-                    newUserData.caloriesIn.splice(i, 0, req.body.CaloriesIn);
-                    newUserData.caloriesOut.splice(i, 0, req.body.CaloriesOut);
+                    newUserData.gender.splice(i, 0, req.body.Gender);
+                    newUserData.BodyTemp.splice(i, 0, req.body.BodyTemp);
+                    newUserData.HeartRate.splice(i, 0, req.body.HeartRate);
                     break;
                 }
             }
@@ -61,20 +61,28 @@ router.post('/Input', (req, res) => {
     else //user has no data push it in
     {
         newUserData.date.push(req.body.Date);
-        newUserData.activity.push(req.body.Activity);
+        newUserData.age.push(req.body.Age);
         newUserData.weight.push(req.body.Weight);
-        newUserData.minutes.push(req.body.Minutes);
-        newUserData.caloriesIn.push(req.body.CaloriesIn);
-        newUserData.caloriesOut.push(req.body.CaloriesOut);
+        newUserData.gender.push(req.body.Gender);
+        newUserData.BodyTemp.push(req.body.BodyTemp);
+        newUserData.HeartRate.push(req.body.HeartRate);
     }
 
-    User.findByIdAndUpdate({_id: req.session.user._id}, {userData: newUserData}, {useFindAndModify:true}, function(err, res) {
-        if (err)
-            console.log('err, ID not found', err);
-        else
-            console.log('successfully updated id');
-    });
-    res.redirect('/tables'); 
+    User.findByIdAndUpdate({_id: req.session.user._id}, {userData: newUserData}, {useFindAndModify: false})
+  .then(updatedUser => {
+    if (!updatedUser) {
+      console.log('Error: User ID not found');
+      // Optionally handle the case where the user wasn't found
+      return; // Or throw an error if needed
+    }
+    console.log('Successfully updated user ID');
+  })
+  .catch(err => {
+    console.error('Error updating user:', err);
+  })
+  .finally(() => {
+    res.redirect('/tables'); // Redirect after successful update or error handling
+  });
 });
 
 
@@ -93,4 +101,5 @@ router.post('/Update', (req, res) => {
     res.redirect('/tables');
 
 });
+
 module.exports = router;
