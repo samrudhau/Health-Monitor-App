@@ -73,6 +73,10 @@ input[type=text]{
     font-size:18px;
     padding-left: 20px;
 }
+input[type=number]{
+  font-size:18px;
+  padding-left: 20px;
+}
 input[type=password]{
     font-size:18px;
     padding-left: 20px;
@@ -193,4 +197,14 @@ select {
   font-family: 'Poppins', sans-serif;
   font-size: 40px;
   color: #fff;
+}
+
+.row.full-width-row {
+  padding: 10px;
+  width: 100%;
+}
+
+#table {
+  /* Optional: Remove default table margins for finer control */
+  margin: 0 auto;
 }

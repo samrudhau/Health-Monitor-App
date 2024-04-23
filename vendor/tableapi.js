@@ -4,7 +4,7 @@ Handsontable is used for all the table functions. To see the full Handsontable d
 */
 $.getJSON('/data', function(user) {
   const entries = user.userData;
-  const entryDates = user.userData.date;
+  const entryDates = user.userData.Date;
   var newDateFormat = [];
   /*
   The table will require dates to be in the MM/DD/YYYY format. In the database and in all other files, date is used in the YYYY-MM-DD format.
@@ -36,14 +36,12 @@ $.getJSON('/data', function(user) {
   to the Handson table function.
   */
   for (var i=0; i<entries.date.length; i++){
-    var userdataobject = {date:"", age:"", minutes:0, weight:0, BodyTemp: 0, HeartRate: 0};
+    var userdataobject = {date:"", BodyTemp: 0, HeartRate: 0, Prediction:""};
     userDataArray.push(userdataobject);
-    userDataArray[i].date = entries.date[i];
-    userDataArray[i].age = entries.age[i];
-    userDataArray[i].gender = entries.gender[i];
-    userDataArray[i].weight = entries.weight[i];
+    userDataArray[i].date = entries.Date[i];
     userDataArray[i].BodyTemp = entries.BodyTemp[i];
     userDataArray[i].HeartRate = entries.HeartRate[i];
+    userDataArray[i].Prediction = entries.Prediction[i];
   };
 
   
@@ -55,20 +53,10 @@ function renderTable(data, user){
   /*
     The following functions are used for data validation when changes are made to the tabe. 
   */
-  weightValidator = function (value, callback) {
-    setTimeout(function(){
-      if (value > 50 && value < 1000) {
-        callback(true);
-      }
-      else {
-        callback(false);
-      }
-    }, 200);
-  };
 
-  genderValidator = function (value, callback) {
+  predictionValidator = function (value, callback) {
     setTimeout(function(){
-      if (value == 'male' || value == 'female' || value == 'others') {
+      if (value == 'Normal' || value == 'Abnormal') {
         callback(true);
       }
       else {
@@ -119,11 +107,9 @@ function renderTable(data, user){
         */
        
         user.userData.date.splice(selection[0].end.row, 1);
-        user.userData.age.splice(selection[0].end.row, 1);
-        user.userData.weight.splice(selection[0].end.row, 1);
-        user.userData.gender.splice(selection[0].end.row, 1);
         user.userData.BodyTemp.splice(selection[0].end.row, 1);
         user.userData.HeartRate.splice(selection[0].end.row, 1);
+        user.userData.Prediction.splice(selection[0].end.row, 1);
         
         /*
         Once all the data in the row is removed, the charts and cards need to be updated.
@@ -137,15 +123,13 @@ function renderTable(data, user){
         }
       }
     },
-    colHeaders: ['Date', 'age', 'gender', 'Weight', 'Body Temperature', 'Heart Rate'],
-    colWidths: [125, 90, 90, 90, 150, 100],
+    colHeaders: ['Date', 'Body Temperature', 'Heart Rate','Prediction'],
+    colWidths: [175, 175, 175, 175],
     columns: [
       {data: 'date', type: 'date', dateFormat: 'MM/DD/YYYY', correctFormat: true},
-      {data: 'age', type: 'text'},
-      {data: 'gender',validator: genderValidator, allowInvalid: true},
-      {data: 'weight', validator: weightValidator, allowInvalid: true},
       {data: 'BodyTemp', validator: BodyTempValidator, allowInvalid: true},
       {data: 'HeartRate', validator: HeartRateValidator, allowInvalid: true},
+      {data: 'Prediction', validator: predictionValidator, allowInvalid: true},
     ],
     licenseKey: 'non-commercial-and-evaluation',
     afterChange: function (change, source) { 
@@ -194,9 +178,9 @@ function renderTable(data, user){
     /*
     The date needs to be converted back to the YYYY-MM-DD format.
     */
-    const unformatedDtaes = user.userData.date;
+    const unformatedDtaes = user.userData.Date;
     var formatedDates = [];
-    for (var i = 0; i < user.userData.date.length; i++){
+    for (var i = 0; i < user.userData.Date.length; i++){
       if(unformatedDtaes[i].includes("/") )
         {
           formatedDates[i] = unformatedDtaes[i].replace(/(\d\d)\/(\d\d)\/(\d{4})/, "$3-$1-$2");

@@ -60,3 +60,64 @@ mongoose.connect(mongourl, {
 });
 
 const server = app.listen(PORT, () => console.log(`Express server listening on port ${PORT}`));
+
+const express = require('express');
+const http = require('http').createServer(app);
+const io = require('socket.io')(http);
+const MongoClient = require('mongodb').MongoClient;  // Assuming you use MongoDB
+
+// Replace with your MongoDB connection details
+const uri = "mongodb+srv://samrudhau0:KYQqX0bMT99iIu0a@healthapp.7jykien.mongodb.net/?retryWrites=true&w=majority&appName=Healthapp";
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+
+app.use(express.json());  // Parse incoming JSON data
+
+// Function to connect to MongoDB
+async function connectToDb() {
+  try {
+    await client.connect();
+    console.log('Connected to MongoDB');
+  } catch (err) {
+    console.error('Error connecting to MongoDB:', err);
+  }
+}
+
+connectToDb();  // Connect to MongoDB on startup
+
+// Function to fetch data from MongoDB
+async function get_data() {
+  const database = client.db("test");
+  const collection = database.collection("users");
+
+  try {
+    const data = await collection.find({}).toArray();
+    return data;
+  } catch (err) {
+    console.error('Error fetching data:', err);
+    return [];  // Handle errors gracefully, e.g., return an empty list
+  }
+}
+
+// Function to broadcast data updates to connected clients
+function emitDataUpdate(data) {
+  io.emit('data_update', data);
+}
+
+// Route (optional) to trigger data updates on demand (e.g., from a button click)
+app.get('/update', async (req, res) => {
+  const data = await get_data();
+  emitDataUpdate(data);
+  res.send({ message: 'Data update triggered' });
+});
+
+// Route to handle database updates (replace with your actual logic)
+app.post('/tables/Update', async (req, res) => {
+  const updatedData = req.body;
+  // ... (your logic to update data in MongoDB)
+  res.send({ message: 'Data updated successfully' });
+  emitDataUpdate(updatedData);  // Emit update after successful update
+});
+
+http.listen(3000, () => {
+  console.log('Server listening on port 3000');
+});

@@ -40,6 +40,22 @@
 
       <input type="text" placeholder="First Name" name="firstName" required><br>
       <input type="text" placeholder="Last Name" name="lastName" required><br>
+
+      <% if (minAge.length > 0) { %>
+        <input type="number" id = "inputError" placeholder="User Age" name="age" required><br>
+        <p id = "textError"> <%= userAlreadyExists %></p><br>
+      <% } else { %>
+        <input type="number" placeholder="User Age" name="age" required><br>
+      <% } %>
+      
+      <% if (minWeight.length > 0) { %>
+        <input type="number" id = "inputError" placeholder="User Weight" name="weight" required><br>
+        <p id = "textError"> <%= userAlreadyExists %></p><br>
+      <% } else { %>
+        <input type="number" placeholder="User Weight" name="weight" required><br>
+      <% } %>
+
+      <input type="text" placeholder="User Gender" name="gender" required><br>
       <input type="text" placeholder="Security Question" name="securityQuestion" required><br>
       <input type="text" placeholder="Security Answer" name="securityAnswer" required><br>
       <button type="Register">Register</button>

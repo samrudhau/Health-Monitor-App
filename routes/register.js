@@ -7,7 +7,9 @@ router.get('/', (req, res) => {
     res.render('register', {
         userAlreadyExists: req.flash('userAlreadyExists'),
         passwordsNotMatching: req.flash('passwordsNotMatching'),
-        minLength: req.flash('minLength')
+        minLength: req.flash('minLength'),
+        minAge: req.flash('minAge'),
+        minWeight: req.flash('minWeight'),
     });
 });
 
@@ -39,6 +41,22 @@ router.post('/Register', (req, res) => {
                     res.redirect('/register');
                 });
             }
+            else if (req.body.age < 8)
+            {
+                req.flash('minAge', 'Age must be between 0-100');
+                console.log('Age must be between 0-100');
+                req.session.save(function() {
+                    res.redirect('/register');
+                });
+            }
+            else if (req.body.weight < 8)
+            {
+                req.flash('minWeight', 'Weight must be between 20-200');
+                console.log('Weight must be between 20-200');
+                req.session.save(function() {
+                    res.redirect('/register');
+                });
+            }
             else
             {
                 const user = new User({
@@ -48,7 +66,10 @@ router.post('/Register', (req, res) => {
                     username: req.body.username,
                     password: req.body.password,
                     securityQuestion: req.body.securityQuestion,
-                    securityAnswer: req.body.securityAnswer
+                    securityAnswer: req.body.securityAnswer,
+                    age: req.body.age,
+                    weight: req.body.weight,
+                    gender: req.body.gender,
                 });
                 user.save()
                 .then(() => {

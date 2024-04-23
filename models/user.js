@@ -9,12 +9,11 @@ const userSchema = mongoose.Schema({
     password: { type: String, required: true},
     securityQuestion: { type: String, required: true},
     securityAnswer: { type: String, required: true},
-
+    age: { type: Number, required: true},
+    weight: { type: Number, required: true},
+    gender: { type: String, required: true},
     userData: {
-        date: [],
-        age: [],
-        weight: [],
-        gender: [],
+        Date: [],
         BodyTemp: [],
         HeartRate: [],
         Prediction: [],
