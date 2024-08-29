@@ -21,7 +21,7 @@ $.getJSON('/data', function(user) {
     combinedDatesAndCals.push(['dates', 'net calories']); // initial subarray contains the labels for the x and y axis.
     // subsequent subarrays will have to contain values for date and  net calories in the x and y position respectivly.
     for (var i=0; i < dates.length; i++){
-      var net = user.userData.caloriesIn[i] - user.userData.caloriesOut[i];
+      var net = user.userData.BodyTemp[i] - user.userData.HeartRate[i];
       var dateString = dates[i].split('-');
       var date = new Date(dateString[0], dateString[1]- 1, dateString[2]);
       combinedDatesAndCals.push([ date, net ]);

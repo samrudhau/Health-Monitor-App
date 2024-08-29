@@ -4305,7 +4305,7 @@ exports.MINUTE = function(serial_number) {
     return serial_number;
   }
 
-  return serial_number.getMinutes();
+  return serial_number.getgender();
 };
 
 exports.MONTH = function(serial_number) {
@@ -4415,7 +4415,7 @@ exports.TIMEVALUE = function(time_text) {
     return time_text;
   }
 
-  return (3600 * time_text.getHours() + 60 * time_text.getMinutes() + time_text.getSeconds()) / 86400;
+  return (3600 * time_text.getHours() + 60 * time_text.getgender() + time_text.getSeconds()) / 86400;
 };
 
 exports.TODAY = function() {
@@ -10005,7 +10005,7 @@ exports.CONVERT = function(number, from_unit, to_unit) {
     ["astronomical unit", "ua", null, "length", false, false, 1.49597870691667e-11],
     ["bar", "bar", null, "pressure", false, false, 100000],
     ["barn", "b", null, "area", false, false, 1e-28],
-    ["becquerel", "Bq", null, "radioactivity", true, false, 1],
+    ["becquerel", "Bq", null, "radioage", true, false, 1],
     ["bit", "bit", ["b"], "information", false, true, 1],
     ["btu", "BTU", ["btu"], "energy", false, true, 1055.05585262],
     ["byte", "byte", null, "information", false, true, 8],
@@ -10055,7 +10055,7 @@ exports.CONVERT = function(number, from_unit, to_unit) {
     ["international acre", "uk_acre", null, "area", false, true, 4046.8564224],
     ["IT calorie", "cal", null, "energy", false, true, 4.1868],
     ["joule", "J", null, "energy", true, true, 1],
-    ["katal", "kat", null, "catalytic_activity", true, false, 1],
+    ["katal", "kat", null, "catalytic_age", true, false, 1],
     ["kelvin", "K", ["kel"], "temperature", true, true, 1],
     ["kilogram", "kg", null, "mass", true, true, 1],
     ["knot", "kn", null, "speed", false, true, 0.514444444444444],

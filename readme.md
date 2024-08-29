@@ -41,7 +41,7 @@ If you have already created an account, you can login with your username and pas
 
 
 ### Dashboard
-Here you can see your see your recently entered health data in the cards on top. The net calories scatterplot shows the net calories for each entered date. The activity donut chart shows the time spent by activity.
+Here you can see your see your recently entered health data in the cards on top. The net calories scatterplot shows the net calories for each entered date. The age donut chart shows the time spent by age.
 
 
 Scrolling down, you can see a form to enter health data for a specific day. The table contains all previous entries. 
