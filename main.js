@@ -1,5 +1,5 @@
 
-const mongourl = 'mongodb+srv://samrudhau0:KYQqX0bMT99iIu0a@healthapp.7jykien.mongodb.net/?retryWrites=true&w=majority&appName=Healthapp';
+const mongourl = 'mongodb+srv://name:password@cluster0.wdcoc.mongodb.net/dbname?retryWrites=true&w=majority';
 const mongoose = require('mongoose');
 const express = require('express');
 const bodyParser = require('body-parser');
