@@ -17,6 +17,7 @@ const userSchema = mongoose.Schema({
         gender: [],
         BodyTemp: [],
         HeartRate: [],
+        Prediction: [],
     }
 });
 

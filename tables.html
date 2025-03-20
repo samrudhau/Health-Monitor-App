@@ -11,7 +11,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel = "stylesheet" type="text/css" href = "css/style.css" >
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="stats-card.js"></script>
 </head>
 <body id="page-top">
   <div id="logout-report-buttons" class="topnav">
@@ -32,15 +33,18 @@
 
     <!-- Page Title-->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-      <h1 id="title-text" >My Health Data:</h1>
+      <h1 id="title-text" >My Health Data:
+      <div class="card-body">
+        <h2 id="title-text"><b>ECG Prediction:</b></h2>
+        <div id="prediction-card" class="h5 mb-0 font-weight-bold text-gray-800"></div>
+      </h1>
+      </div>
     </div>
 
 
     <!-- Content Row -->
     <div class="row">
       <!-- Calories -->
-
-
       <div class="col-xl-3 col-md-6 mb-4">
         <div class="card border-left-primary shadow h-100 py-2">
           <div class="card-body">
@@ -48,7 +52,7 @@
               <div class="col mr-2">
 
                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Body Temperature</div>
-                <div id="calorie-card" class="h5 mb-0 font-weight-bold text-gray-800">0</div>
+                <div id="bodytemp-card" class="h5 mb-0 font-weight-bold text-gray-800"></div>
               </div>
               <div class="col-auto">
                 <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -65,7 +69,7 @@
             <div class="row no-gutters align-items-center">
               <div class="col mr-2">
                 <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Heart Rate</div>
-                <div id="weight-card" class="h5 mb-0 font-weight-bold text-gray-800">0</div>
+                <div id="heart-card" class="h5 mb-0 font-weight-bold text-gray-800">0</div>
               </div>
               <div class="col-auto">
                 <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -82,7 +86,7 @@
             <div class="row no-gutters align-items-center">
               <div class="col mr-2">
                 <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Gender</div>
-                <div id="age-card"class="h5 mb-0 font-weight-bold text-gray-800"></div>
+                <div id="gender-card"class="h5 mb-0 font-weight-bold text-gray-800">male</div>
               </div>
             </div>
           </div>
@@ -96,7 +100,7 @@
             <div class="row no-gutters align-items-center">
               <div class="col mr-2">
                 <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Age</div>
-                <div id="date-card" class="h5 mb-0 font-weight-bold text-gray-800">0</div>
+                <div id="age-card" class="h5 mb-0 font-weight-bold text-gray-800">0</div>
               </div>
               <div class="col-auto">
                 <i class="fas fa-comments fa-2x text-gray-300"></i>
@@ -172,7 +176,7 @@
                   </select>
               </div> -->
               <div>
-                <input type="number" min="0" max="100" name="age" placeholder="age" id="Age" required/>
+                <input type="number" min="0" max="100" name="Age" placeholder="age" id="Age" required/>
               </div>
               <div>
                 <input type="text" name="Gender" placeholder="gender" id="Gender" required/>
@@ -215,21 +219,12 @@
     </div>
   </div>
 </div>
-
-  
-  
-
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
  <script src="/handsontable/handsontable.full.min.js"></script>
  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-
  <script src="/stats-card.js"></script>
-
  <script src="/line-chart.js"></script>
  <script src="/pie-chart.js"></script>
  <script src="/tableapi.js"></script>
-
- 
- 
 </body>
 </html>

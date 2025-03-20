@@ -68,7 +68,7 @@ function renderTable(data, user){
 
   genderValidator = function (value, callback) {
     setTimeout(function(){
-      if (value > 0 && value <= 600) {
+      if (value == 'male' || value == 'female' || value == 'others') {
         callback(true);
       }
       else {
@@ -138,7 +138,7 @@ function renderTable(data, user){
       }
     },
     colHeaders: ['Date', 'age', 'gender', 'Weight', 'Body Temperature', 'Heart Rate'],
-    colWidths: [125, 125, 90, 90, 150, 100],
+    colWidths: [125, 90, 90, 90, 150, 100],
     columns: [
       {data: 'date', type: 'date', dateFormat: 'MM/DD/YYYY', correctFormat: true},
       {data: 'age', type: 'text'},
@@ -217,59 +217,6 @@ function renderTable(data, user){
       contentType: "application/json",
       dataType:'json',
       });
-      /*
-       Now, the cards and charts need to be updated. The data will be processed just as it is in the cards.js, line-chart.js, and 
-       pie-chart,js files. Then the render(), renderCards(), and renderpie() functions are called to update the charts and cards.
-       */
-      let dates = [];
-      dates = user.userData.date;
-      if (dates.length > 0)
-      {
-        let combinedDatesAndCals = [];
-        combinedDatesAndCals.push(['dates', 'weight']);
-        for (var i=0; i < dates.length; i++){
-        var net = user.userData.BodyTemp[i] - user.userData.HeartRate[i];
-        var dateString = dates[i].split('-');
-        var date = new Date(dateString[0], dateString[1]- 1, dateString[2]);
-        combinedDatesAndCals.push([ date, net ]);
-         };
-        render(combinedDatesAndCals);
-        };
-        var serverUserdata = user.userData;
-        var activities = serverUserdata.age;
-        var gender = serverUserdata.gender;
-        let activitiesAndgender = [];
-        for (var i = 0; i<activities.length; i++)
-        {
-          activitiesAndgender[i] = [activities[i], gender[i]];
-        };
-
-        var uniqueageCount = 0;
-        let reducedActivites = [];
-        let reducedgender = [];
-
-
-        for (var j = 0; j < activitiesAndgender.length; j++){
-          if (reducedActivites.includes(activitiesAndgender[j][0])){
-            var combinedgender = Number(reducedgender[reducedActivites.indexOf(activitiesAndgender[j][0])]) + Number( activitiesAndgender[j][1]);
-            reducedgender[reducedActivites.indexOf(activitiesAndgender[j][0])] = combinedgender.toString();
-
-          }
-          else{
-            reducedActivites[uniqueageCount] = activitiesAndgender[j][0];
-            reducedgender[uniqueageCount] = activitiesAndgender[j][1];
-            uniqueageCount++;
-          }
-
-        }
-          
-        let ageAndgenderPieArray = [];
-        ageAndgenderPieArray.push(['age', 'Time Spent']);
-        for (var i = 0; i < reducedActivites.length; i++){
-          ageAndgenderPieArray.push([reducedActivites[i], parseInt(reducedgender[i]) ]);
-        }
-
-        renderpie(ageAndgenderPieArray);
-        renderCards(user);
+      renderCards(user);
 
   };

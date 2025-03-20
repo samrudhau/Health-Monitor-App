@@ -40,7 +40,6 @@ router.post('/Input', (req, res) => {
             newUserData.HeartRate.push(req.body.HeartRate);
             newUserData.BodyTemp.push(req.body.BodyTemp);
             newUserData.gender.push(req.body.gender);
-
         }
         else
         {
@@ -55,8 +54,7 @@ router.post('/Input', (req, res) => {
                     newUserData.weight.splice(i, 0, req.body.Weight);
                     newUserData.gender.splice(i, 0, req.body.gender);
                     newUserData.BodyTemp.splice(i, 0, req.body.BodyTemp);
-                    newUserData.HeartRate.splice(i, 0, req.body.hearRate);
-                    break;
+                    newUserData.HeartRate.splice(i, 0, req.body.hearRate);break;
                 }
             }
         }
@@ -71,13 +69,21 @@ router.post('/Input', (req, res) => {
         newUserData.gender.push(req.body.gender);
     }
 
-    User.findByIdAndUpdate({_id: req.session.user._id}, {userData: newUserData}, {useFindAndModify:true}, function(err, res) {
-        if (err)
-            console.log('err, ID not found', err);
-        else
-            console.log('successfully updated id');
-    });
-    res.redirect('/tables'); 
+    User.findByIdAndUpdate({_id: req.session.user._id}, {userData: newUserData}, {useFindAndModify: false})
+  .then(updatedUser => {
+    if (!updatedUser) {
+      console.log('Error: User ID not found');
+      // Optionally handle the case where the user wasn't found
+      return; // Or throw an error if needed
+    }
+    console.log('Successfully updated user ID');
+  })
+  .catch(err => {
+    console.error('Error updating user:', err);
+  })
+  .finally(() => {
+    res.redirect('/tables'); // Redirect after successful update or error handling
+  });
 });
 
 
@@ -96,4 +102,5 @@ router.post('/Update', (req, res) => {
     res.redirect('/tables');
 
 });
+
 module.exports = router;
