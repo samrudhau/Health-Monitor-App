@@ -19,6 +19,7 @@ function renderCards(user) {
         document.getElementById('gender-card').innerHTML = user.userData.gender[user.userData.gender.length -1];
         document.getElementById('age-card').innerHTML = user.userData.age[user.userData.date.length -1];
 
+
     }
 
 };

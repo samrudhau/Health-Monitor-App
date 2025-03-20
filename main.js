@@ -4,17 +4,17 @@ const mongoose = require('mongoose');
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 const session = require('express-session');
 const MongoDBStore = require('connect-mongodb-session')(session);
 const flash = require('connect-flash');
 const expressLayouts = require('express-ejs-layouts');
-const path = require("path")
+const path = require("path");
 
 const store = new MongoDBStore({
     uri: mongourl,
     collection: 'sessions'
-})
+});
 
 const indexRoute = require('./routes/index');
 const registerRoute = require('./routes/register');
@@ -29,7 +29,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(expressLayouts);
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json({ type: 'application/json' }))
+app.use(bodyParser.json({ type: 'application/json' }));
 app.use(session({
     secret: 'bao123456789',
     resave: false,

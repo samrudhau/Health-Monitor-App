@@ -36,7 +36,7 @@ $.getJSON('/data', function(user) {
   to the Handson table function.
   */
   for (var i=0; i<entries.date.length; i++){
-    var userdataobject = {date:"", age:"", minutes:0, weight:0, BodyTemp: 0, HeartRate: 0};
+    var userdataobject = {date:"", age:"", gender:0, weight:0, BodyTemp: 0, HeartRate: 0};
     userDataArray.push(userdataobject);
     userDataArray[i].date = entries.date[i];
     userDataArray[i].age = entries.age[i];

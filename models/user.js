@@ -19,6 +19,6 @@ const userSchema = mongoose.Schema({
         HeartRate: [],
         Prediction: [],
     }
-})
+});
 
 module.exports = mongoose.model('User', userSchema);
